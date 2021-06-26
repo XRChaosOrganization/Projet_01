@@ -1,0 +1,12 @@
+
+Builds/
+Chaos/Library/
+Chaos/.vs/
+Chaos/.vscode/
+Chaos/Logs/
+Chaos/obj/
+Chaos/UserSettings/
+
+*.csproj
+*.sln
+
