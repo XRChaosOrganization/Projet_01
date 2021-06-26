@@ -1,11 +1,11 @@
 
 Builds/
-Chaos/Library/
-Chaos/.vs/
-Chaos/.vscode/
-Chaos/Logs/
-Chaos/obj/
-Chaos/UserSettings/
+PROJET_01/Library/
+PROJET_01/.vs/
+PROJET_01/.vscode/
+PROJET_01/Logs/
+PROJET_01/obj/
+PROJET_01/UserSettings/
 
 *.csproj
 *.sln
