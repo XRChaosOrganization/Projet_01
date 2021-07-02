@@ -218,6 +218,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85446c0a6a1aa9408d1858389e2428e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splash:
+    baseScore: 0
+    baseRotSpeed: 0
+    baseVelocity: 0
+    maxVelocity: 8
+    bounceSound: {fileID: 0}
+    deathSound: {fileID: 0}
   splashColor:
   - {r: 0.8679245, g: 0.061409745, b: 0.061409745, a: 1}
   - {r: 0.8679245, g: 0.37657392, b: 0.07778566, a: 1}
@@ -227,8 +234,8 @@ MonoBehaviour:
   - {r: 0.084549636, g: 0.9433962, b: 0.58038473, a: 1}
   - {r: 0.10234961, g: 0.70661783, b: 0.9433962, a: 1}
   - {r: 0.0036325455, g: 0, b: 1, a: 1}
-  mVelocity: 8
-  sBounces: 7
+  maxVelocity: 8
+  initialBounces: 7
 --- !u!1 &4687115324748287644
 GameObject:
   m_ObjectHideFlags: 0

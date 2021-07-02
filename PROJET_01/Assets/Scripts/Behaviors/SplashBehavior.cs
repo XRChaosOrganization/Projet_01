@@ -5,34 +5,28 @@ using UnityEngine;
 public class SplashBehavior : MonoBehaviour
 {
 
-    Splash splash;
+    public Splash splash;
     Rigidbody2D rb;
     SpriteRenderer sr;
 
-    public static Color[] splashColor;
+    public Color[] splashColor; 
 
     //Pour tester les metrics
-    public float mVelocity;
-    [Range(0,7)] public int sBounces;
-
+    public float maxVelocity;
+    [Range(0, 7)] public int initialBounces;
 
     private void Awake()
     {
-        splash = new Splash();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
 
-        //Pour tester les metrics
-        splash.baseBounce = sBounces;
-        splash.remainingBounces = splash.baseBounce;
-        sr.color = splashColor[splash.remainingBounces];
-
+        splash.InitSplash(initialBounces);
+        sr.color = splashColor[splash.CurrentBounces];
     }
-
 
     private void Update()
     {
-        splash.maxVelocity = mVelocity; //Pour tester les metrics
+        splash.maxVelocity = maxVelocity; //Pour tester les metrics
 
         if (rb.velocity.magnitude > splash.maxVelocity)
         {
@@ -41,57 +35,38 @@ public class SplashBehavior : MonoBehaviour
     }
 
 
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D _collision)
     {
-
-        
-
-        if (collision.collider.CompareTag("Obstacle"))
+        if (_collision.collider.CompareTag("Obstacle"))
         {
-            if (splash.remainingBounces <= 0)
+            if (splash.CurrentBounces <= 0)
                 Destroy(this.gameObject);
             else
             {
-                splash.remainingBounces--;
-                sr.color = splashColor[splash.remainingBounces];
+                splash.CurrentBounces--;
+                sr.color = splashColor[splash.CurrentBounces];
             }
-            
         }
+
+        AdditionnalCollisionEnter(_collision);
     }
 
-    public virtual void AdditionnalCollisionEnter(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D _other)
     {
 
-    }
-
-    void OnTriggerEnter2D(Collider2D trigger)
-    {
-
-        if (trigger.CompareTag("Goal"))
+        if (_other.CompareTag("Goal"))
         {
             Debug.Log("Scored !");
             Destroy(this.gameObject);
         }
 
-        if (trigger.CompareTag("Killzone"))
+        if (_other.CompareTag("Killzone"))
         {
             Destroy(this.gameObject);
         }
+
+        AdditionnalTriggerEnter(_other);
     }
-
-    public virtual void AdditionnalTriggerEnter(Collider2D _trig = null)
-    {
-
-    }
-
-
-
-
-
-
-
-
-
+    public virtual void AdditionnalCollisionEnter(Collision2D _collision = null) { }
+    public virtual void AdditionnalTriggerEnter(Collider2D _trigger = null) { }
 }
