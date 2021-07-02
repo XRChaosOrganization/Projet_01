@@ -5,6 +5,8 @@ PROJET_01/.vs/
 PROJET_01/.vscode/
 PROJET_01/Logs/
 PROJET_01/obj/
+PROJET_01/Temp/
+PROJET_01/Builds/
 PROJET_01/UserSettings/
 
 *.csproj
