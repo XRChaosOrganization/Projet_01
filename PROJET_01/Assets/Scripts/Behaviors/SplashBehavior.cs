@@ -9,7 +9,7 @@ public class SplashBehavior : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
 
-    public static Color[] splashColor;
+    public Color[] splashColor;
 
     //Pour tester les metrics
     public float mVelocity;
