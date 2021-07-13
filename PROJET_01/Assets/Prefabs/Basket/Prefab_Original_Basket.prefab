@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 331861753852251999}
   - component: {fileID: 331861753852251996}
   m_Layer: 0
-  m_Name: Prefab_Basket
+  m_Name: Prefab_Original_Basket
   m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

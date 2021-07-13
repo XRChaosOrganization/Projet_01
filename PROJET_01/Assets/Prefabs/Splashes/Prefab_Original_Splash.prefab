@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4687115323564046328}
   - component: {fileID: 4687115323564046331}
   - component: {fileID: 4687115323564046325}
-  - component: {fileID: 4687115323564046324}
+  - component: {fileID: -8902684517277475662}
   m_Layer: 7
   m_Name: Prefab_Original_Splash
   m_TagString: Splash
@@ -206,7 +206,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4687115323564046324
+--- !u!114 &-8902684517277475662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4687115323564046330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85446c0a6a1aa9408d1858389e2428e, type: 3}
+  m_Script: {fileID: 11500000, guid: 366c5bd4188948b41b298f0dc3d82bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   splash:
@@ -226,14 +226,14 @@ MonoBehaviour:
     bounceSound: {fileID: 0}
     deathSound: {fileID: 0}
   splashColor:
-  - {r: 0.8679245, g: 0.061409745, b: 0.061409745, a: 1}
-  - {r: 0.8679245, g: 0.37657392, b: 0.07778566, a: 1}
-  - {r: 0.9433962, g: 0.77182823, b: 0.15574935, a: 1}
-  - {r: 0.84083265, g: 0.8980392, b: 0.18039218, a: 1}
-  - {r: 0.109221146, g: 0.7924528, b: 0.078497685, a: 1}
-  - {r: 0.084549636, g: 0.9433962, b: 0.58038473, a: 1}
-  - {r: 0.10234961, g: 0.70661783, b: 0.9433962, a: 1}
-  - {r: 0.0036325455, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.019583862, b: 0, a: 1}
+  - {r: 1, g: 0.4768409, b: 0, a: 1}
+  - {r: 1, g: 0.6961245, b: 0, a: 1}
+  - {r: 0.60516584, g: 1, b: 0, a: 1}
+  - {r: 0.09344962, g: 0.9433962, b: 0.78699285, a: 1}
+  - {r: 0.16967781, g: 0.6379079, b: 0.8773585, a: 1}
+  - {r: 0, g: 0.23067236, b: 1, a: 1}
+  - {r: 0.56474113, g: 0, b: 1, a: 1}
   maxVelocity: 8
   initialBounces: 7
 --- !u!1 &4687115324748287644

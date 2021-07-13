@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 1424845101}
   - component: {fileID: 1424845100}
   - component: {fileID: 1424845099}
+  - component: {fileID: 1424845102}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -327,7 +328,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 20
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -360,6 +361,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1424845102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424845098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46dc755742188ef4fb04c3596a739a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wireColor: {r: 0.94698536, g: 1, b: 0, a: 1}
+  UnitsSize: 10
+  constraint: 1
+  camera: {fileID: 1424845100}
 --- !u!1001 &1705853048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -489,10 +506,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6960249979332891873, guid: 3fe426c874fcdd940be27796d8dcc070, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6960249979501813696, guid: 3fe426c874fcdd940be27796d8dcc070, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -540,10 +553,6 @@ PrefabInstance:
     - target: {fileID: 6960249979501813703, guid: 3fe426c874fcdd940be27796d8dcc070, type: 3}
       propertyPath: m_Name
       value: Prefab_Variant_TestLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960249979910706672, guid: 3fe426c874fcdd940be27796d8dcc070, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fe426c874fcdd940be27796d8dcc070, type: 3}

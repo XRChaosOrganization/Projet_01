@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1564702915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721271684970274396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366c5bd4188948b41b298f0dc3d82bd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  splash:
-    baseScore: 0
-    baseRotSpeed: 0
-    baseVelocity: 0
-    maxVelocity: 8
-    bounceSound: {fileID: 0}
-    deathSound: {fileID: 0}
-  splashColor:
-  - {r: 1, g: 0.019583862, b: 0, a: 1}
-  - {r: 1, g: 0.4768409, b: 0, a: 1}
-  - {r: 1, g: 0.6961245, b: 0, a: 1}
-  - {r: 0.60516584, g: 1, b: 0, a: 1}
-  - {r: 0.09344962, g: 0.9433962, b: 0.78699285, a: 1}
-  - {r: 0.16967781, g: 0.6379079, b: 0.8773585, a: 1}
-  - {r: 0, g: 0.23067236, b: 1, a: 1}
-  - {r: 0.56474113, g: 0, b: 1, a: 1}
-  maxVelocity: 8
-  initialBounces: 7
 --- !u!1001 &8263936456180656550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,8 +66,3 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4687115323564046324, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
---- !u!1 &3721271684970274396 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4687115323564046330, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
-  m_PrefabInstance: {fileID: 8263936456180656550}
-  m_PrefabAsset: {fileID: 0}
