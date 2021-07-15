@@ -20,8 +20,8 @@ public class SplashBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
 
-        splash.InitSplash(initialBounces);
-        sr.color = splashColor[splash.CurrentBounces];
+        //splash.InitSplash(initialBounces);
+        //sr.color = splashColor[splash.CurrentBounces];
     }
 
     private void Update()
@@ -33,7 +33,6 @@ public class SplashBehavior : MonoBehaviour
             rb.velocity = rb.velocity.normalized * splash.maxVelocity;
         }
     }
-
 
     private void OnCollisionEnter2D(Collision2D _collision)
     {

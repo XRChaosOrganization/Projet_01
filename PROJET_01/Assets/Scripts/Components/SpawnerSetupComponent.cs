@@ -2,34 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerTrajectoryComponent : MonoBehaviour
+public class SpawnerSetupComponent : MonoBehaviour
 {
-    [System.Serializable]
-    public class SpawnDirection
-    {
-        public GameObject target;
-        //public float velocity;
-        [Range(0f, 90f)]public float angle; // En °
-        public bool draw = false;
 
-        //Can be used in SpawnerBehavior
-        [HideInInspector] public Vector2 _dir;
-        [HideInInspector] public Vector2 spread1;
-        [HideInInspector] public Vector2 spread2;
-        
-        
+    [System.Serializable]
+    public class SplashSetup
+    {
+        public GameObject splashType;
+        [Range(1, 7)] public int initialBounces;
     }
 
 
-    public SpawnDirection[] spawnDirections;
+
+    [System.Serializable]
+    public class SpawnSetup
+    {
+        [HideInInspector] public bool stopSpawning;
+
+        [Header("Trajectory")]
+        public bool drawRays = false;
+        public GameObject target;
+        [Range(0, 100)] [Tooltip("en % de la vitesse max d'un splash")] public int velocity;  
+        [Range(0f, 90f)][Tooltip("Angle en Degrés °")]public float angle;
+        
+        //For SpawnerBehavior
+        [HideInInspector] public Vector2 _dir;
+        [HideInInspector] public Vector2 spread1;
+        [HideInInspector] public Vector2 spread2;
+
+        //[Header("Timing")]
+        //public float timeOffset;
+        //public float spawnCooldown;
+
+        [Header("")]
+        public SplashSetup[] splashList;
+        [HideInInspector] public int index = 0;
+
+
+    }
+
+
+    public List<SpawnSetup> spawnSetup;
 
 
     private void OnDrawGizmos()
     {
 
-        foreach (SpawnDirection direction in spawnDirections)
+        foreach (SpawnSetup direction in spawnSetup)
         {
-            if (direction != null && direction.draw)
+            if (direction != null && direction.drawRays)
             {
                 // Draw Ray to Target
                 direction._dir = direction.target.transform.localPosition;
@@ -61,7 +82,7 @@ public class SpawnerTrajectoryComponent : MonoBehaviour
 
 
 
-    float ToRadian(float angle)
+    public float ToRadian(float angle)
     {
         float rAngle = Mathf.PI * angle / 180;
         return rAngle;
