@@ -9,7 +9,7 @@ public class SpawnerSetupComponent : MonoBehaviour
     public class SplashSetup
     {
         public GameObject splashType;
-        [Range(1, 7)] public int initialBounces;
+        [Range(1, 7)] public int initialBounces = 7;
     }
 
 

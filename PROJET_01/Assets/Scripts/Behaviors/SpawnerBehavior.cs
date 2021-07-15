@@ -11,7 +11,7 @@ public class SpawnerBehavior : MonoBehaviour
     bool removed;
 
 
-    public int selectedDir;
+    int selectedDir;
 
 
     public Transform splashContainer;
