@@ -23,7 +23,7 @@ public class SpawnerSetupComponent : MonoBehaviour
         public bool drawRays = false;
         public GameObject target;
         [Range(0, 100)] [Tooltip("en % de la vitesse max d'un splash")] public int velocity;  
-        [Range(0f, 90f)][Tooltip("Angle en Degrés °")]public float angle;
+        [Range(0f, 180f)][Tooltip("Angle en Degrés °")]public float angle;
         
         //For SpawnerBehavior
         [HideInInspector] public Vector2 _dir;
@@ -59,13 +59,13 @@ public class SpawnerSetupComponent : MonoBehaviour
 
 
                 // Draw Rays at specified angle
-                float x1 = direction._dir.x * Mathf.Cos(ToRadian(direction.angle)) + direction._dir.y * Mathf.Sin(ToRadian(direction.angle));
-                float y1 = direction._dir.y * Mathf.Cos(ToRadian(direction.angle)) - direction._dir.x * Mathf.Sin(ToRadian(direction.angle));
+                float x1 = direction._dir.x * Mathf.Cos(ToRadian(direction.angle/2)) + direction._dir.y * Mathf.Sin(ToRadian(direction.angle/2));
+                float y1 = direction._dir.y * Mathf.Cos(ToRadian(direction.angle/2)) - direction._dir.x * Mathf.Sin(ToRadian(direction.angle/2));
 
                 direction.spread1 = new Vector2(x1, y1);
 
-                float x2 = direction._dir.x * Mathf.Cos(ToRadian(direction.angle)) - direction._dir.y * Mathf.Sin(ToRadian(direction.angle));
-                float y2 = direction._dir.y * Mathf.Cos(ToRadian(direction.angle)) + direction._dir.x * Mathf.Sin(ToRadian(direction.angle));
+                float x2 = direction._dir.x * Mathf.Cos(ToRadian(direction.angle/2)) - direction._dir.y * Mathf.Sin(ToRadian(direction.angle/2));
+                float y2 = direction._dir.y * Mathf.Cos(ToRadian(direction.angle/2)) + direction._dir.x * Mathf.Sin(ToRadian(direction.angle/2));
 
                 direction.spread2 = new Vector2(x2, y2);
 

@@ -99,11 +99,11 @@ public class SpawnerBehavior : MonoBehaviour
         sb.splash.InitSplash(Setup.spawnSetup[selectedDir].splashList[Setup.spawnSetup[selectedDir].index].initialBounces);
         sr.color = sb.splashColor[Setup.spawnSetup[selectedDir].splashList[Setup.spawnSetup[selectedDir].index].initialBounces];
 
-        float xMax = Setup.spawnSetup[selectedDir]._dir.x * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle)) + (Setup.spawnSetup[selectedDir]._dir.y * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle)));
-        float xMin = Setup.spawnSetup[selectedDir]._dir.x * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle)) - (Setup.spawnSetup[selectedDir]._dir.y * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle)));
+        float xMax = Setup.spawnSetup[selectedDir]._dir.x * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)) + (Setup.spawnSetup[selectedDir]._dir.y * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)));
+        float xMin = Setup.spawnSetup[selectedDir]._dir.x * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)) - (Setup.spawnSetup[selectedDir]._dir.y * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)));
 
-        float yMax = Setup.spawnSetup[selectedDir]._dir.y * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle)) - (Setup.spawnSetup[selectedDir]._dir.x * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle)));
-        float yMin = Setup.spawnSetup[selectedDir]._dir.y * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle)) + (Setup.spawnSetup[selectedDir]._dir.x * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle)));
+        float yMax = Setup.spawnSetup[selectedDir]._dir.y * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)) - (Setup.spawnSetup[selectedDir]._dir.x * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)));
+        float yMin = Setup.spawnSetup[selectedDir]._dir.y * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)) + (Setup.spawnSetup[selectedDir]._dir.x * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)));
 
         Vector2 spread = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
 
