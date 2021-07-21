@@ -16,15 +16,12 @@ public class PaddleDragComponent : MonoBehaviour
     float leftClamp;
     float rightClamp;
 
-
     //No Velocity Cap to avoid Paddle lagging behind finger
-
-
-
 
     void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
+        this.GetComponent<GameObjectAnchoringComponent>().enabled = false; //Deactivate anchoring so it doesn't recenter when losing drag 
     }
 
     void Start()
@@ -33,8 +30,6 @@ public class PaddleDragComponent : MonoBehaviour
         leftClamp = -2.815f + paddleWidth / 2;
         rightClamp = 2.815f - paddleWidth / 2;
     }
-
-
 
     void Update()
     {
@@ -48,8 +43,6 @@ public class PaddleDragComponent : MonoBehaviour
         // =======================================================
         //                 Detect Touch on Sceen
         // =======================================================
-
-
         if (Input.GetMouseButton(0)) // => Mouse Controls for testing in Unity
         {
             Vector3 mousePos = Input.mousePosition;
@@ -65,14 +58,9 @@ public class PaddleDragComponent : MonoBehaviour
         worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
         worldPosition.z = 0;
 
-
-
         // =======================================================
         //                What to do with the Touch
         // =======================================================
-
-
-
         if (isDragActve)
         {
             Drag();
@@ -86,15 +74,9 @@ public class PaddleDragComponent : MonoBehaviour
                 {
                     PickUp();
                 }
-            }
-
-            
+            } 
         }
-
-        
-
     }
-
 
     void PickUp()
     {
@@ -103,7 +85,6 @@ public class PaddleDragComponent : MonoBehaviour
 
     void Drag()
     {
-        
         float xClamped = Mathf.Clamp(worldPosition.x, leftClamp, rightClamp);
         this.gameObject.transform.position = new Vector2(xClamped, this.gameObject.transform.position.y);
     }
