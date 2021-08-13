@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallComonent : ObstacleBehavior
+public class WallComponent : ObstacleBehavior
 {
 
 }

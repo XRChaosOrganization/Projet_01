@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicSpawnerComponent : SpawnerBehavior
+public class BasicSpawnerComponent : OLD_SpawnerBehavior
 {
     
 

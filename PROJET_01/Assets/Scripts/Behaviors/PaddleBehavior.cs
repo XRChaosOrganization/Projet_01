@@ -4,31 +4,23 @@ using UnityEngine;
 
 public class PaddleBehavior : MonoBehaviour
 {
-    enum SpreadMode { LINEAR, CUBIC_IN, CUBIC_OUT, SINE_IN, SINE_OUT, CIRCLE_IN, CIRCLE_OUT };
-    BoxCollider2D col;
-    Splash splash;
+    public enum SpreadMode { LINEAR, CUBIC_IN, CUBIC_OUT, SINE_IN, SINE_OUT, CIRCLE_IN, CIRCLE_OUT };
+    private BoxCollider2D col;
 
-    float d;
+    private float d;
 
     [Header("Debug")]
     [SerializeField] [Range(2, 6)] int nbRays;
 
-
     [Header("Metrics")]
-    [SerializeField] [Range(0, 90)] [Tooltip("en degrés")] int maxAngle;
-    [SerializeField] SpreadMode spreadMode;
-    [SerializeField] [Range(0, 100)] [Tooltip("en % de la vitesse max d'un splash")] int velocity;
-
-
-    
+    [Range(0, 90)] [Tooltip("en degrés")] public int maxAngle;
+    public SpreadMode spreadMode;
+    [Range(0, 100)] [Tooltip("en % de la vitesse max d'un splash")] public int velocity;
 
     private void Awake()
     {
         col = GetComponent<BoxCollider2D>();
-        splash = new Splash();
-        
     }
-
 
     private void OnDrawGizmosSelected()
     {
@@ -82,22 +74,17 @@ public class PaddleBehavior : MonoBehaviour
                 default:
                     break;
             }
-
-
-
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D _collision)
     {
         if (_collision.collider.CompareTag("Splash"))
         {
-
+            Splash splash = _collision.gameObject.GetComponent<SplashBehavior>().splash;
             d = (_collision.GetContact(0).point.x - transform.position.x) / (transform.lossyScale.x / 2);
             _collision.rigidbody.velocity = Vector3.zero;
             _collision.rigidbody.angularVelocity = 0;
-
 
             switch (spreadMode)
             {
@@ -139,12 +126,7 @@ public class PaddleBehavior : MonoBehaviour
                 default:
                     break;
             }
-
-            
-
         }
-
-
     }
 
     float EaseInCubic(float x)
@@ -157,7 +139,6 @@ public class PaddleBehavior : MonoBehaviour
         if (x < 0)
             return -(1 - Mathf.Pow(1 - Mathf.Abs(x), 3));
         else return 1 - Mathf.Pow(1 - x, 3);
-
     }
 
     float EaseInSine(float x)
@@ -181,6 +162,4 @@ public class PaddleBehavior : MonoBehaviour
     {
         return Mathf.Sqrt(1 - Mathf.Pow(x - 1, 2));
     }
-
-
 }

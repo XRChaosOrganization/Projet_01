@@ -4,122 +4,111 @@ using UnityEngine;
 
 public class SpawnerBehavior : MonoBehaviour
 {
+    [Header("Settings")]
+    public float startOffset;
+    public float spawnCooldown;
 
+    [Header("Debug")]
+    private bool hasWaitedForStartOffset = false;
+    private float time = 0.0f;
+    private int currentSpawnSetup = 0;
 
-    [SerializeField] float timeOffset;
-    [SerializeField] float spawnCooldown;
-    bool removed;
+    //public enum TargetAimingMode { WORLD, LOCAL };
+    //public TargetAimingMode targetAimingMode;
 
+    private SpawnerSetupComponent setup;
 
-    int selectedDir;
-
-
-    public Transform splashContainer;
-    [HideInInspector] public SpawnerSetupComponent Setup;
-    
     void Awake()
     {
-        Setup = this.gameObject.GetComponent<SpawnerSetupComponent>();
+        setup = this.gameObject.GetComponent<SpawnerSetupComponent>();
 
-        selectedDir = 0;
-
-        foreach (SpawnerSetupComponent.SpawnSetup item in Setup.spawnSetup)
+        foreach (SpawnerSetupComponent.SpawnSetup item in setup.spawnSetup)
         {
-            if (item.splashList.Length <= 0)
+            if (item.splashList.Count <= 0)
             {
-                Setup.spawnSetup.Remove(item);
+                setup.spawnSetup.Remove(item);
             }
         }
 
+        //if (loopMovement)
+        //    originalPos = this.transform.position;
     }
 
     void Start()
     {
-
-        InvokeRepeating("SpawnSplash", timeOffset, spawnCooldown);
-        
+        GetComponent<GameObjectAnchoringComponent>().enabled = false; //If we want to move the Go deactivate anchoring component
     }
 
-    public virtual void SpawnSplash()
+    private void Update()
     {
-        
-        if (Setup.spawnSetup.Count > 0 )
+        //if (isSpawnerMoving)
+        //{
+        //    MoveSpawner();
+        //    
+        //    if(targetAimingMode == TargetAimingMode.WORLD)
+        //        KeepTargetsAtPosition();
+        //}
+
+        if (setup.spawnSetup.Count <= 0) return; 
+
+        time += Time.deltaTime;
+        if (time >= startOffset && hasWaitedForStartOffset == false)
         {
+            hasWaitedForStartOffset = true;
+            time = 0.0f;
+        }
 
-            do
+        if(hasWaitedForStartOffset)
+        {
+            if(time >= spawnCooldown)
             {
-                if (Setup.spawnSetup[selectedDir].index < Setup.spawnSetup[selectedDir].splashList.Length)
-                {
-                    InitSpawn();
-                    break;
+                SpawnSplash(setup.spawnSetup[currentSpawnSetup]);
+                
+                if (currentSpawnSetup + 1 > setup.spawnSetup.Count - 1)
+                    currentSpawnSetup = 0;
+                else
+                    currentSpawnSetup++;
 
-                }
-
-            } while (Setup.spawnSetup[selectedDir].index < Setup.spawnSetup[selectedDir].splashList.Length);
-
-
-
-            if (Setup.spawnSetup.Count > 0 && !removed)
-            {
-                CycleDir();
-
+                time = 0.0f;
             }
-            else if (selectedDir >= Setup.spawnSetup.Count)
-            {
-                selectedDir = 0;
-            } 
-
-
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-
-        
-        
     }
 
-    void CycleDir()
+    private void SpawnSplash(SpawnerSetupComponent.SpawnSetup _setup)
     {
-        if (selectedDir >= Setup.spawnSetup.Count - 1)
-            selectedDir = 0;
-        else selectedDir++;
-    }
-
-    void InitSpawn()
-    {
-        removed = false;
-
-        GameObject obj = Instantiate(Setup.spawnSetup[selectedDir].splashList[Setup.spawnSetup[selectedDir].index].splashType, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        GameObject obj = Instantiate(_setup.splashList[0].splashPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
         SplashBehavior sb = obj.GetComponent<SplashBehavior>();
         SpriteRenderer sr = obj.GetComponentInChildren<SpriteRenderer>();
 
+        sb.splash.InitSplash(_setup.splashList[0].initialBounces);
+        sr.color = sb.splashColor[_setup.splashList[0].initialBounces];
 
-        sb.splash.InitSplash(Setup.spawnSetup[selectedDir].splashList[Setup.spawnSetup[selectedDir].index].initialBounces);
-        sr.color = sb.splashColor[Setup.spawnSetup[selectedDir].splashList[Setup.spawnSetup[selectedDir].index].initialBounces];
+        float xMax = _setup.Direction.x * Mathf.Cos(setup.ToRadian(_setup.angle / 2)) + (_setup.Direction.y * Mathf.Sin(setup.ToRadian(_setup.angle / 2)));
+        float xMin = _setup.Direction.x * Mathf.Cos(setup.ToRadian(_setup.angle / 2)) - (_setup.Direction.y * Mathf.Sin(setup.ToRadian(_setup.angle / 2)));
 
-        float xMax = Setup.spawnSetup[selectedDir]._dir.x * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)) + (Setup.spawnSetup[selectedDir]._dir.y * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)));
-        float xMin = Setup.spawnSetup[selectedDir]._dir.x * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)) - (Setup.spawnSetup[selectedDir]._dir.y * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)));
-
-        float yMax = Setup.spawnSetup[selectedDir]._dir.y * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)) - (Setup.spawnSetup[selectedDir]._dir.x * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)));
-        float yMin = Setup.spawnSetup[selectedDir]._dir.y * Mathf.Cos(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)) + (Setup.spawnSetup[selectedDir]._dir.x * Mathf.Sin(Setup.ToRadian(Setup.spawnSetup[selectedDir].angle/2)));
+        float yMax = _setup.Direction.y * Mathf.Cos(setup.ToRadian(_setup.angle / 2)) - (_setup.Direction.x * Mathf.Sin(setup.ToRadian(_setup.angle / 2)));
+        float yMin = _setup.Direction.y * Mathf.Cos(setup.ToRadian(_setup.angle / 2)) + (_setup.Direction.x * Mathf.Sin(setup.ToRadian(_setup.angle / 2)));
 
         Vector2 spread = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
 
+        obj.GetComponent<Rigidbody2D>().AddForce(spread.normalized * _setup.velocity * sb.maxVelocity);
 
-        obj.GetComponent<Rigidbody2D>().AddForce(spread.normalized * Setup.spawnSetup[selectedDir].velocity * sb.maxVelocity);
-
-        Setup.spawnSetup[selectedDir].index++;
-
-        if (Setup.spawnSetup[selectedDir].index >= Setup.spawnSetup[selectedDir].splashList.Length)
+        if(_setup.infiniteSpawn == false)
         {
-            Setup.spawnSetup.RemoveAt(selectedDir);
-            removed = true;
+            _setup.splashList.RemoveAt(0);
+
+            if(_setup.splashList.Count <= 0)
+            {
+                setup.spawnSetup.Remove(_setup);
+            }
         }
-            
-
-
     }
 
+    //public void KeepTargetsAtPosition ()
+    //{
+    //    for (int i = 0; i < setup.spawnSetup.Count; i++)
+    //    {
+    //        setup.spawnSetup[i].target.transform.position = setup.spawnSetup[i].originalPos;
+    //    }
+    //}
 }
