@@ -60,8 +60,48 @@ PrefabInstance:
       value: Prefab_Variant_BasicSplash
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e02542683fc18e479f2663556908932, type: 3}
+    - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_Color.b
+      value: 0.059807703
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_Color.g
+      value: 0.059807703
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_Color.r
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.28083333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.22766061
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25174415
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.149
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4687115323564046324, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
