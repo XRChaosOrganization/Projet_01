@@ -39,11 +39,11 @@ public class DebugManagerComponent : MonoBehaviour
     //PADDLE MODIFICATIONS
     private void InitPaddleModificationsDebug ()
     {
-        maxAngleSlider.value = paddle.maxAngle;
-        velocitySlider.value = paddle.velocity;
+        //maxAngleSlider.value = paddle.maxAngle;
+        //velocitySlider.value = paddle.velocity;
 
-        velocityFeedback.text = paddle.velocity.ToString();
-        angleFeedback.text = paddle.maxAngle.ToString();
+        //velocityFeedback.text = paddle.velocity.ToString();
+        //angleFeedback.text = paddle.maxAngle.ToString();
     }
 
     public void UpdatePaddle ()
@@ -52,33 +52,27 @@ public class DebugManagerComponent : MonoBehaviour
         {
             case 0 :
                 paddle.spreadMode = PaddleBehavior.SpreadMode.LINEAR;
+                paddle.maxAngle = 50;
+                paddle.velocity = 95;
                 break;
             case 1:
-                paddle.spreadMode = PaddleBehavior.SpreadMode.CUBIC_IN;
+                paddle.spreadMode = PaddleBehavior.SpreadMode.SINE_IN;
+                paddle.maxAngle = 50;
+                paddle.velocity = 95;
                 break;
             case 2:
                 paddle.spreadMode = PaddleBehavior.SpreadMode.CUBIC_OUT;
-                break;
-            case 3:
-                paddle.spreadMode = PaddleBehavior.SpreadMode.SINE_IN;
-                break;
-            case 4:
-                paddle.spreadMode = PaddleBehavior.SpreadMode.SINE_OUT;
-                break;
-            case 5:
-                paddle.spreadMode = PaddleBehavior.SpreadMode.CIRCLE_IN;
-                break;
-            case 6:
-                paddle.spreadMode = PaddleBehavior.SpreadMode.CIRCLE_OUT;
+                paddle.maxAngle = 30;
+                paddle.velocity = 95;
                 break;
             default:
                 break;
         }
 
-        paddle.maxAngle = (int) maxAngleSlider.value;
-        paddle.velocity = (int) velocitySlider.value;
+        //paddle.maxAngle = (int) maxAngleSlider.value;
+        //paddle.velocity = (int) velocitySlider.value;
 
-        velocityFeedback.text = paddle.velocity.ToString();
-        angleFeedback.text = paddle.maxAngle.ToString();
+        //velocityFeedback.text = paddle.velocity.ToString();
+        //angleFeedback.text = paddle.maxAngle.ToString();
     }
 }

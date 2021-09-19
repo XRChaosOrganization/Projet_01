@@ -92,8 +92,9 @@ public class SpawnerBehavior : MonoBehaviour
         Vector2 spread = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
 
         obj.GetComponent<Rigidbody2D>().AddForce(spread.normalized * _setup.velocity * sb.maxVelocity);
+        obj.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-2f, 2f));
 
-        if(_setup.infiniteSpawn == false)
+        if (_setup.infiniteSpawn == false)
         {
             _setup.splashList.RemoveAt(0);
 

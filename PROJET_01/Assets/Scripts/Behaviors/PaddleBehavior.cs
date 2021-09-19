@@ -85,7 +85,7 @@ public class PaddleBehavior : MonoBehaviour
             Splash splash = _collision.gameObject.GetComponent<SplashBehavior>().splash;
             d = (_collision.GetContact(0).point.x - transform.position.x) / (transform.lossyScale.x / 2);
             _collision.rigidbody.velocity = Vector3.zero;
-            _collision.rigidbody.angularVelocity = 0;
+            
 
             switch (spreadMode)
             {
@@ -126,7 +126,11 @@ public class PaddleBehavior : MonoBehaviour
 
                 default:
                     break;
+
+                
             }
+            _collision.rigidbody.angularVelocity = 0;
+            _collision.rigidbody.AddTorque(-10*d);
         }
     }
 
