@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lib_Math;
 
 public class PaddleBehavior : MonoBehaviour
 {
@@ -45,30 +46,30 @@ public class PaddleBehavior : MonoBehaviour
                     break;
 
                 case SpreadMode.CUBIC_IN:
-                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, EaseInCubic(ratio) * maxAngle) * Vector3.up / 3, Color.red);
-                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, EaseInCubic(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, Easing.CubicIn(ratio) * maxAngle) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, Easing.CubicIn(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
                     break;
                 case SpreadMode.CUBIC_OUT:
-                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, EaseOutCubic(ratio) * maxAngle) * Vector3.up / 3, Color.red);
-                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, EaseOutCubic(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, Easing.CubicOut(ratio) * maxAngle) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, Easing.CubicOut(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
                     break;
 
                 case SpreadMode.SINE_IN:
-                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, EaseInSine(ratio) * maxAngle) * Vector3.up / 3, Color.red);
-                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, EaseInSine(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, Easing.SineIn(ratio) * maxAngle) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, Easing.SineIn(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
                     break;
                 case SpreadMode.SINE_OUT:
-                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, EaseOutSine(ratio) * maxAngle) * Vector3.up / 3, Color.red);
-                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, EaseOutSine(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, Easing.SineOut(ratio) * maxAngle) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, Easing.SineOut(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
                     break;
 
                 case SpreadMode.CIRCLE_IN:
-                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, EaseInCircle(ratio) * maxAngle) * Vector3.up / 3, Color.red);
-                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, EaseInCircle(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, Easing.CircleIn(ratio) * maxAngle) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, Easing.CircleIn(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
                     break;
                 case SpreadMode.CIRCLE_OUT:
-                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, EaseOutCircle(ratio) * maxAngle) * Vector3.up / 3, Color.red);
-                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, EaseOutCircle(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(neg, Quaternion.Euler(0, 0, Easing.CircleOut(ratio) * maxAngle) * Vector3.up / 3, Color.red);
+                    Debug.DrawRay(pos, Quaternion.Euler(0, 0, Easing.CircleOut(ratio) * maxAngle * -1) * Vector3.up / 3, Color.red);
                     break;
 
                 default:
@@ -94,33 +95,33 @@ public class PaddleBehavior : MonoBehaviour
                     break;
 
                 case SpreadMode.CUBIC_IN:
-                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -EaseInCubic(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
-                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -EaseInCubic(d) * maxAngle) * Vector3.up * 10, Color.green);
+                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -Easing.CubicIn(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
+                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -Easing.CubicIn(d) * maxAngle) * Vector3.up * 10, Color.green);
                     break;
 
                 case SpreadMode.CUBIC_OUT:
-                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -EaseOutCubic(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
-                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -EaseOutCubic(d) * maxAngle) * Vector3.up * 10, Color.green);
+                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -Easing.CubicOut(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
+                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -Easing.CubicOut(d) * maxAngle) * Vector3.up * 10, Color.green);
                     break;
 
                 case SpreadMode.SINE_IN:
-                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -EaseInSine(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
-                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -EaseInSine(d) * maxAngle) * Vector3.up * 10, Color.green);
+                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -Easing.SineIn(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
+                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -Easing.SineIn(d) * maxAngle) * Vector3.up * 10, Color.green);
                     break;
 
                 case SpreadMode.SINE_OUT:
-                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -EaseOutSine(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
-                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -EaseOutSine(d) * maxAngle) * Vector3.up * 10, Color.green);
+                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -Easing.SineOut(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
+                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -Easing.SineOut(d) * maxAngle) * Vector3.up * 10, Color.green);
                     break;
 
                 case SpreadMode.CIRCLE_IN:
-                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -EaseInCircle(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
-                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -EaseInCircle(d) * maxAngle) * Vector3.up * 10, Color.green);
+                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -Easing.CircleIn(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
+                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -Easing.CircleIn(d) * maxAngle) * Vector3.up * 10, Color.green);
                     break;
 
                 case SpreadMode.CIRCLE_OUT:
-                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -EaseOutCircle(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
-                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -EaseOutCircle(d) * maxAngle) * Vector3.up * 10, Color.green);
+                    _collision.rigidbody.AddForce(Quaternion.Euler(0, 0, -Easing.CircleOut(d) * maxAngle) * Vector3.up * velocity / 100 * splash.maxVelocity, ForceMode2D.Impulse);
+                    Debug.DrawRay(_collision.GetContact(0).point, Quaternion.Euler(0, 0, -Easing.CircleOut(d) * maxAngle) * Vector3.up * 10, Color.green);
                     break;
 
                 default:
@@ -129,37 +130,4 @@ public class PaddleBehavior : MonoBehaviour
         }
     }
 
-    float EaseInCubic(float x)
-    {
-        return Mathf.Pow(x, 3);
-    }
-
-    float EaseOutCubic(float x)
-    {
-        if (x < 0)
-            return -(1 - Mathf.Pow(1 - Mathf.Abs(x), 3));
-        else return 1 - Mathf.Pow(1 - x, 3);
-    }
-
-    float EaseInSine(float x)
-    {
-        return 1 - Mathf.Cos((x * Mathf.PI) / 2);
-    }
-
-    float EaseOutSine(float x)
-    {
-        return Mathf.Sin((x * Mathf.PI) / 2);
-    }
-
-    float EaseInCircle(float x)
-    {
-        if (x < 0)
-            return -(1 - Mathf.Sqrt(1 - Mathf.Pow(x, 2)));
-        else return 1 - Mathf.Sqrt(1 - Mathf.Pow(x, 2));
-    }
-
-    float EaseOutCircle(float x)
-    {
-        return Mathf.Sqrt(1 - Mathf.Pow(x - 1, 2));
-    }
 }

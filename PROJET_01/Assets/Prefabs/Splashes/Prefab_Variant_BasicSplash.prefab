@@ -7,9 +7,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8902684517277475662, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: splashColor.Array.data[0].a
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: -8902684517277475662, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: splashColor.Array.data[2].g
+      value: 0.95686066
+      objectReference: {fileID: 0}
+    - target: {fileID: -8902684517277475662, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: splashColor.Array.data[6].a
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: -8902684517277475662, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: splashColor.Array.data[7].a
+      value: 0.87058824
+      objectReference: {fileID: 0}
     - target: {fileID: 4687115323564046327, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115323564046327, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687115323564046327, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4687115323564046327, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,6 +79,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.17
       objectReference: {fileID: 0}
+    - target: {fileID: 4687115323564046329, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4687115323564046330, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_Name
       value: Prefab_Variant_BasicSplash
@@ -69,15 +97,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_Color.b
-      value: 0.059807703
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_Color.g
-      value: 0.059807703
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_Color.r
-      value: 0.990566
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287642, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_SortingOrder
@@ -85,24 +113,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.28083333
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.22766061
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25174415
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4687115324748287645, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.149
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4687115323564046324, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+    - {fileID: 4687115323564046328, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
