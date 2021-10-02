@@ -7,7 +7,7 @@ public class SplashBehavior : MonoBehaviour
 
     public Splash splash;
     Rigidbody2D rb;
-    SpriteRenderer sr;
+    public SpriteRenderer[] colorChangeLayers;
 
     public Color[] splashColor;
 
@@ -18,15 +18,12 @@ public class SplashBehavior : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponentInChildren<SpriteRenderer>();
 
-        //splash.InitSplash(initialBounces);
-        //sr.color = splashColor[splash.CurrentBounces];
     }
 
     private void Update()
     {
-        splash.maxVelocity = maxVelocity; //Pour tester les metrics
+        splash.maxVelocity = maxVelocity; ; //Pour tester les metrics
 
         if (rb.velocity.magnitude > splash.maxVelocity)
         {
@@ -43,9 +40,21 @@ public class SplashBehavior : MonoBehaviour
             else
             {
                 splash.CurrentBounces--;
-                sr.color = splashColor[splash.CurrentBounces];
+                foreach (SpriteRenderer sr in colorChangeLayers)
+                {
+                    sr.color = splashColor[splash.CurrentBounces];
+                }
+                
             }
         }
+        else if (_collision.collider.CompareTag("Border"))
+        {
+            if (rb.velocity.normalized.y > 0 && (rb.velocity.normalized.x <= 0.4f || rb.velocity.normalized.x >= -0.4f))
+            {
+                rb.AddForce(Vector2.up * 1.7f, ForceMode2D.Impulse);
+            }
+        }
+       
 
         AdditionnalCollisionEnter(_collision);
     }

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class SpawnerBehavior : MonoBehaviour
 {
+    Transform splashContainer;
+
+
     [Header("Settings")]
     public float startOffset;
     public float spawnCooldown;
 
+    [Space]
     [Header("Debug")]
     private bool hasWaitedForStartOffset = false;
     private float time = 0.0f;
@@ -20,6 +24,8 @@ public class SpawnerBehavior : MonoBehaviour
 
     void Awake()
     {
+        splashContainer = GameObject.Find("SplashesContainer").transform;
+
         setup = this.gameObject.GetComponent<SpawnerSetupComponent>();
 
         foreach (SpawnerSetupComponent.SpawnSetup item in setup.spawnSetup)
@@ -77,11 +83,17 @@ public class SpawnerBehavior : MonoBehaviour
     private void SpawnSplash(SpawnerSetupComponent.SpawnSetup _setup)
     {
         GameObject obj = Instantiate(_setup.splashList[0].splashPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        obj.transform.parent = splashContainer;
         SplashBehavior sb = obj.GetComponent<SplashBehavior>();
-        SpriteRenderer sr = obj.GetComponentInChildren<SpriteRenderer>();
+        
 
         sb.splash.InitSplash(_setup.splashList[0].initialBounces);
-        sr.color = sb.splashColor[_setup.splashList[0].initialBounces];
+
+        foreach (SpriteRenderer sr in sb.colorChangeLayers)
+        {
+            sr.color = sb.splashColor[_setup.splashList[0].initialBounces];
+        }
+        
 
         float xMax = _setup.Direction.x * Mathf.Cos(setup.ToRadian(_setup.angle / 2)) + (_setup.Direction.y * Mathf.Sin(setup.ToRadian(_setup.angle / 2)));
         float xMin = _setup.Direction.x * Mathf.Cos(setup.ToRadian(_setup.angle / 2)) - (_setup.Direction.y * Mathf.Sin(setup.ToRadian(_setup.angle / 2)));

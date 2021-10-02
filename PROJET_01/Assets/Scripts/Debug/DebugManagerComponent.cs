@@ -11,12 +11,23 @@ public class DebugManagerComponent : MonoBehaviour
 
     [Space]
     [Header("Paddle Changement")]
-    public PaddleBehavior paddle;
+
     public TMP_Dropdown paddleFunctionModeDropDown;
     public Slider maxAngleSlider;
     public Slider velocitySlider;
     public TMP_Text angleFeedback; 
-    public TMP_Text velocityFeedback; 
+    public TMP_Text velocityFeedback;
+    PaddleBehavior paddle;
+
+    [Space]
+    [Header("Level Selection")]
+
+    public TMP_Dropdown levelSelectDropDown;
+    public List<GameObject> levelList;
+
+    GameObject currentLevel;
+
+
 
     private void Start()
     {
@@ -26,19 +37,33 @@ public class DebugManagerComponent : MonoBehaviour
 
         //Init paddle changement option 
         InitPaddleModificationsDebug();
+
+        currentLevel = Instantiate(levelList[0]);
     }
 
     public void ToggleDebugMenu ()
     {
         if (debugMenu.activeSelf)
+        {
             debugMenu.SetActive(false);
+            Time.timeScale = 1;
+        }
+
         else
+        {
+            Time.timeScale = 0f;
+            
             debugMenu.SetActive(true);
+        }
+            
     }
 
     //PADDLE MODIFICATIONS
     private void InitPaddleModificationsDebug ()
     {
+
+        paddle = FindObjectOfType<PaddleBehavior>();
+
         //maxAngleSlider.value = paddle.maxAngle;
         //velocitySlider.value = paddle.velocity;
 
@@ -48,6 +73,8 @@ public class DebugManagerComponent : MonoBehaviour
 
     public void UpdatePaddle ()
     {
+        paddle = FindObjectOfType<PaddleBehavior>(); 
+
         switch (paddleFunctionModeDropDown.value)
         {
             case 0 :
@@ -69,10 +96,21 @@ public class DebugManagerComponent : MonoBehaviour
                 break;
         }
 
+        
+
         //paddle.maxAngle = (int) maxAngleSlider.value;
         //paddle.velocity = (int) velocitySlider.value;
 
         //velocityFeedback.text = paddle.velocity.ToString();
         //angleFeedback.text = paddle.maxAngle.ToString();
+    }
+
+
+    public void LevelChange()
+    {
+
+        Destroy(currentLevel);
+        currentLevel = Instantiate(levelList[levelSelectDropDown.value]);
+
     }
 }

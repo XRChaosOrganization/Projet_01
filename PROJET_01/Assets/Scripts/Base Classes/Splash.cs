@@ -24,11 +24,8 @@ public class Splash
         }
     }
 
-    public float baseRotSpeed;
-    public float baseVelocity; //@Alex : base velocity = velocity when splash spawn ? if else, we don't need this 
-
     //Max Velocity != Base Velocity ? 
-    public float maxVelocity = 8f;
+    public float maxVelocity;
 
     //bool collideWithOtherSplash = false;
 
