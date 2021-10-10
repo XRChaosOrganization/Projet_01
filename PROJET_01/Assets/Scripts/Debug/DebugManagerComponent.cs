@@ -29,17 +29,17 @@ public class DebugManagerComponent : MonoBehaviour
 
 
 
-    private void Start()
-    {
+    //private void Start()
+    //{
         //Turn off canvas if its displayed 
-        if (debugMenu.activeSelf)
-            debugMenu.SetActive(false);
+       // if (debugMenu.activeSelf)
+         //   debugMenu.SetActive(false);
 
         //Init paddle changement option 
-        InitPaddleModificationsDebug();
+        // InitPaddleModificationsDebug();
 
-        currentLevel = Instantiate(levelList[0]);
-    }
+        // currentLevel = Instantiate(levelList[0]);
+    //}
 
     public void ToggleDebugMenu ()
     {
