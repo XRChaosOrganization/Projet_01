@@ -832,6 +832,10 @@ PrefabInstance:
       value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: -8902684517277475662, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
+      propertyPath: splash.baseScore
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: -8902684517277475662, guid: 86a75e4aad9026e43a17b95bd8e92b18, type: 3}
       propertyPath: splashworthPoints
       value: 100
       objectReference: {fileID: 0}
