@@ -24,9 +24,10 @@ public class SpawnerBehavior : MonoBehaviour
 
     void Awake()
     {
-        splashContainer = GameObject.Find("SplashesContainer").transform;
+        
 
         setup = this.gameObject.GetComponent<SpawnerSetupComponent>();
+        splashContainer = setup.splashRoot;
 
         foreach (SpawnerSetupComponent.SpawnSetup item in setup.spawnSetup)
         {
@@ -42,6 +43,7 @@ public class SpawnerBehavior : MonoBehaviour
 
     void Start()
     {
+        
         GetComponent<GameObjectAnchoringComponent>().enabled = false; //If we want to move the Go deactivate anchoring component
     }
 
